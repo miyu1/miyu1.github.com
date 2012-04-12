@@ -7,20 +7,20 @@
     <div style="background:lightblue;text-align:center;padding-top:1px;padding-bottom:1px" >
       <h1> {{ page.title }} </h1>
     </div>
-    <p>
-      {% assign ab = "a~b" | split:~ %}
-      {% for item in ab %}
-        {{ item }} xx
-      {% endfor %}
-
-      
+    <div style="text-align:right">
       {% capture url %}{{ page.url | remove:'.html' }}{% endcapture %}
-      {{ url }} <br />
-      {{ url | split:_ | first }}<br />
-      {% capture url_split %}{{ url | split:_ }}{% endcapture %}
-      {{ url_split | first }} &nbsp;
-      {{ url_split | last }}
-    </p>
+      {% if url contains '_ja' %}
+         <a href="{{ url | remove:'_ja' }}.html" >English</a>
+      {% else %}
+         English
+      {% endif %}
+         |
+      {% if url contains '_ja' %}
+         日本語
+      {% else %}
+         <a href="{{ url }}_ja.html">日本語</a>
+      {% endif %}
+    </div>
     {{ content }}
   </body>
 </html>
