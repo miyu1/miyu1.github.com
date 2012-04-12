@@ -1,0 +1,26 @@
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title> {{ page.title }} </title>
+  </head>
+  <body style="width:640px">
+    <div style="background:lightblue;text-align:center;padding-top:1px;padding-bottom:1px" >
+      <h1> {{ page.title }} </h1>
+    </div>
+    <p>
+      {% assign ab = "a~b" | split:~ %}
+      {% for item in ab %}
+        {{ item }} xx
+      {% endfor %}
+
+      
+      {% capture url %}{{ page.url | remove:'.html' }}{% endcapture %}
+      {{ url }} <br />
+      {{ url | split:_ | first }}<br />
+      {% capture url_split %}{{ url | split:_ }}{% endcapture %}
+      {{ url_split | first }} &nbsp;
+      {{ url_split | last }}
+    </p>
+    {{ content }}
+  </body>
+</html>
